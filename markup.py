@@ -1,10 +1,7 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
-#стіл
-a = []
-
-# Корзина
-basket = []
+# Корзини для кожного користувача
+basket = {}
 
 def get_basket_text(basket):
     if not basket:
@@ -12,10 +9,21 @@ def get_basket_text(basket):
     items = "\n".join(basket)
     return f"У вашій корзині наразі наступні позиції:\n{items}"
 
-# Функція очищення корзини
-def clear_basket(basket):
-    basket.clear()
+# Функція додавання товару до корзини для конкретного користувача
+def add_to_basket(user_id, item):
+    if user_id not in basket:
+        basket[user_id] = []
+    basket[user_id].append(item)
+    return "Товар успішно доданий до корзини."
+
+# Функція очищення корзини для конкретного користувача
+def clear_basket(user_id):
+    if user_id in basket:
+        basket[user_id].clear()
     return "Корзина успішно очищена."
+
+
+
 
 btnMain = KeyboardButton('Початкова сторінка')
 btnBasket = KeyboardButton('Корзина')

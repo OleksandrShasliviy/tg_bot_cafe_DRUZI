@@ -14,6 +14,11 @@ chat_id = -1001920474173
 
 
 
+
+
+
+
+
 @dp.message_handler(commands=['start'])
 async def command_start(message: types.Message):
     await bot.send_message(message.from_user.id, 'Првіт {0.first_name} 😃Ласкаво просимо до нашого дружнього товариства☺️'
@@ -77,101 +82,127 @@ async def bot_message(message: types.Message):
         await bot.send_message(message.from_user.id, 'Виберіть ваш столик', reply_markup=nav.stilMenu)
 
     elif message.text == 'Стіл № 1':
-        nav.basket.append('ваш столик № 1')
-        await bot.send_message(message.from_user.id, ' Ваш Стіл № 1', reply_markup=nav.basketMenu3)
+        nav.add_to_basket(message.from_user.id, 'Стіл № 1')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text,reply_markup=nav.basketMenu3)
 
     elif message.text == 'Стіл № 2':
-        nav.basket.append('ваш столик № 2')
-        await bot.send_message(message.from_user.id, ' Ваш Стіл № 2', reply_markup=nav.basketMenu3)
+        nav.add_to_basket(message.from_user.id, 'Стіл № 2')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text,reply_markup=nav.basketMenu3)
 
     elif message.text == 'Стіл № 3':
-        nav.basket.append('ваш столик № 3')
-        await bot.send_message(message.from_user.id, ' Ваш Стіл № 3', reply_markup=nav.basketMenu3)
+        nav.add_to_basket(message.from_user.id, 'Стіл № 3')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text,reply_markup=nav.basketMenu3)
 
     elif message.text == 'Стіл № 4':
-        nav.basket.append('ваш столик № 4')
-        await bot.send_message(message.from_user.id, ' Ваш Стіл № 4', reply_markup=nav.basketMenu3)
+        nav.add_to_basket(message.from_user.id, 'Стіл № 4')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text,reply_markup=nav.basketMenu3)
 
     elif message.text == 'Стіл № 5':
-        nav.basket.append('ваш столик № 5')
-        await bot.send_message(message.from_user.id, ' Ваш Стіл № 5', reply_markup=nav.basketMenu3)
+        nav.add_to_basket(message.from_user.id, 'Стіл № 5')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text,reply_markup=nav.basketMenu3)
 
     elif message.text == 'Стіл № 6':
-        nav.basket.append('ваш столик № 6')
-        await bot.send_message(message.from_user.id, ' Ваш Стіл № 6', reply_markup=nav.basketMenu3)
+        nav.add_to_basket(message.from_user.id, 'Стіл № 6')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text,reply_markup=nav.basketMenu3)
 
     elif message.text == 'Стіл № 7':
-        nav.basket.append('ваш столик № 7')
-        await bot.send_message(message.from_user.id, ' Ваш Стіл № 7', reply_markup=nav.basketMenu3)
+        nav.add_to_basket(message.from_user.id, 'Стіл № 7')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text,reply_markup=nav.basketMenu3)
 
     elif message.text == 'Стіл № 8':
-        nav.basket.append('ваш столик № 8')
-        await bot.send_message(message.from_user.id, ' Ваш Стіл № 8', reply_markup=nav.basketMenu3)
+        nav.add_to_basket(message.from_user.id, 'Стіл № 8')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text,reply_markup=nav.basketMenu3)
+
 
     elif message.text == 'Стіл № 9':
-        nav.basket.append('ваш столик № 9')
-        await bot.send_message(message.from_user.id, ' Ваш Стіл № 9', reply_markup=nav.basketMenu3)
+        nav.add_to_basket(message.from_user.id, 'Стіл № 9')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text, reply_markup=nav.basketMenu3)
+
 
     elif message.text == 'Стіл № 10':
-        nav.basket.append('ваш столик № 10')
-        await bot.send_message(message.from_user.id, ' Ваш Стіл № 10', reply_markup=nav.basketMenu3)
+        nav.add_to_basket(message.from_user.id, 'Стіл № 10')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text,reply_markup=nav.basketMenu3)
 
 
     # Перегляд корзини
 
     elif message.text == 'Переглянути корзину':
-        basket_text = nav.get_basket_text(nav.basket)
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
         await bot.send_message(message.from_user.id, basket_text)
 
     #Добавлення в корзину
 
     elif message.text == 'З ХАМОНОМ ТА ГРУШЕЮ - 120':
-        nav.basket.append('З ХАМОНОМ ТА ГРУШЕЮ - 120')
-        await bot.send_message(message.from_user.id, nav.basket)
+        nav.add_to_basket(message.from_user.id, 'З ХАМОНОМ ТА ГРУШЕЮ - 120')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text)
 
-    elif message.text == 'З АВОКАДО ІЗ ЛОСОСЕМ - 120':
-        nav.basket.append('З АВОКАДО ІЗ ЛОСОСЕМ - 120')
-        await bot.send_message(message.from_user.id, nav.basket)
 
     elif message.text == 'З ЯЙЦЕМ ТА БЕКОНОМ - 120':
-        nav.basket.append('З ЯЙЦЕМ ТА БЕКОНОМ - 120')
-        await bot.send_message(message.from_user.id, nav.basket)
+        nav.add_to_basket(message.from_user.id, 'З ЯЙЦЕМ ТА БЕКОНОМ - 120')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text)
+
+    elif message.text == 'З АВОКАДО ІЗ ЛОСОСЕМ - 120':
+        nav.add_to_basket(message.from_user.id, 'З АВОКАДО ІЗ ЛОСОСЕМ - 120')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text)
 
     elif message.text == 'З БАНАНОМ ТА ШОКОЛАДОМ - 100':
-        nav.basket.append('З БАНАНОМ ТА ШОКОЛАДОМ - 100')
-        await bot.send_message(message.from_user.id, nav.basket)
+        nav.add_to_basket(message.from_user.id, 'З БАНАНОМ ТА ШОКОЛАДОМ - 100')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text)
+
        #pizza
     elif message.text == 'МАРГАРИТА 100/130/160 -30/35/40 см':
-        nav.basket.append('МАРГАРИТА 100/130/160 -30/35/40 см')
-        await bot.send_message(message.from_user.id, nav.basket)
+        nav.add_to_basket(message.from_user.id, 'МАРГАРИТА 100/130/160 -30/35/40 см')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text)
 
     elif message.text == '4 СИРА 140/180/220 -30/35/40 см':
-        nav.basket.append('4 СИРА 140/180/220 -30/35/40 см')
-        await bot.send_message(message.from_user.id, nav.basket)
+        nav.add_to_basket(message.from_user.id, '4 СИРА 140/180/220 -30/35/40 см')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text)
 
     elif message.text == "М'ЯСНА 140/180/220 -30/35/40 см":
-        nav.basket.append("М'ЯСНА 140/180/220 -30/35/40 см")
-        await bot.send_message(message.from_user.id, nav.basket)
+        nav.add_to_basket(message.from_user.id, "М'ЯСНА 140/180/220 -30/35/40 см")
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text)
 
     elif message.text == 'ЦЕЗАР 140/180/220 -30/35/40 см':
-        nav.basket.append('ЦЕЗАР 140/180/220 -30/35/40 см')
-        await bot.send_message(message.from_user.id, nav.basket)
+        nav.add_to_basket(message.from_user.id, 'ЦЕЗАР 140/180/220 -30/35/40 см')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text)
 
     elif message.text == 'МОРСЬКА 160/200/250 -30/35/40 см':
-        nav.basket.append('МОРСЬКА 160/200/250 -30/35/40 см')
-        await bot.send_message(message.from_user.id, nav.basket)
+        nav.add_to_basket(message.from_user.id, 'МОРСЬКА 160/200/250 -30/35/40 см')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text)
 
     elif message.text == 'САЛЯМІ 120/160/200 -30/35/40 см':
-        nav.basket.append('САЛЯМІ 120/160/200 -30/35/40 см')
-        await bot.send_message(message.from_user.id, nav.basket)
+        nav.add_to_basket(message.from_user.id, 'САЛЯМІ 120/160/200 -30/35/40 см')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text)
 
     elif message.text == 'З ГРУШЕЮ І ДОРБЛЮ 120/160/200 -30/35/40 см':
-        nav.basket.append('З ГРУШЕЮ І ДОРБЛЮ 120/160/200 -30/35/40 см')
-        await bot.send_message(message.from_user.id, nav.basket)
+        nav.add_to_basket(message.from_user.id, 'З ГРУШЕЮ І ДОРБЛЮ 120/160/200 -30/35/40 см')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text)
 
     elif message.text == 'ГАВАЙСЬКА 120/160/200 -30/35/40 см':
-        nav.basket.append('ГАВАЙСЬКА 120/160/200 -30/35/40 см')
-        await bot.send_message(message.from_user.id, nav.basket)
+        nav.add_to_basket(message.from_user.id, 'ГАВАЙСЬКА 120/160/200 -30/35/40 см')
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text)
 
     # Submenu buttons for 'Меню із холодними напоями'
     elif message.text == 'PePsi - 330 ml - 25':
@@ -506,26 +537,29 @@ async def bot_message(message: types.Message):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     # Очищення корзини
     elif message.text == 'Очистити корзину':
-        nav.clear_basket(nav.basket)
+        nav.clear_basket(message.from_user.id)
         await bot.send_message(message.from_user.id, "Корзина успішно очищена.", reply_markup=nav.basketMenu)
 
-    # відправка фіцу
+    elif message.text == 'Переглянути корзину':
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(message.from_user.id, basket_text)
+
+
+
     elif message.text == 'Відправити замовлення офіціанту':
-        await bot.send_message(chat_id, nav.get_basket_text(nav.basket))
+        # send basket to user
+        basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        await bot.send_message(chat_id, nav.get_basket_text(nav.basket.get(message.from_user.id)))
+
+    #await bot.send_message(chat_id, message.from_user.id, basket_text)
+    # basket_text = nav.get_basket_text(nav.basket.get(message.from_user.id))
+        #await bot.send_message(chat_id, message.from_user.id, basket_text)
+
+    # відправка фіцу
+   # elif message.text == 'Відправити замовлення офіціанту':
+     #   await bot.send_message(chat_id, nav.get_basket_text(nav.basket))
 
 
 
