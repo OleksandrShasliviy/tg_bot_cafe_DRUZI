@@ -27,12 +27,13 @@ def clear_basket(user_id):
 
 btnMain = KeyboardButton('Початкова сторінка')
 btnBasket = KeyboardButton('Корзина')
+btnKalian = KeyboardButton("Кальянне меню")
 
 
 # -----Main Menu----
 
 btnMenu = KeyboardButton('Головне меню')
-mainMenu = ReplyKeyboardMarkup(resize_keyboard=True).add(btnMenu,btnBasket)
+mainMenu = ReplyKeyboardMarkup(resize_keyboard=True).add(btnMenu,btnKalian,btnBasket)
 
 
 btnStolik = KeyboardButton('Виберіть ваш столик')
@@ -58,10 +59,11 @@ stilMenu = ReplyKeyboardMarkup(resize_keyboard=True).add(btnStil1,btnStil2,btnSt
                                                          btnStil7,btnStil8,btnStil9,btnStil10,btnMain)
 
 
+#kalian menu
 
+btnKaliMasta = KeyboardButton('Кальянного майстра в корзину')
 
-
-
+DymMenu = ReplyKeyboardMarkup(resize_keyboard=True).add(btnKaliMasta).add(btnMain)
 
 
 
